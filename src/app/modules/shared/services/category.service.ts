@@ -42,4 +42,13 @@ updateCategories(body:any, id: any) {
   return this.http.put(endpoint, body);
 }
 
+/**
+ * delete category
+ */
+
+deleteCategory(id:any) {
+  const endpoint = `${base_url}/categories/${id}` ;
+  return this.http.delete(endpoint, id);
 }
+}
+
