@@ -68,13 +68,32 @@ export class CategoryComponent implements OnInit {
 
   }
 
+    onEdit(id:number, name:string, description:string) {
+      console.log('click')
+      const dialogRef = this.dialog.open( NewCategoryComponent ,
+        {
+         data: {id: id, name:name, description:description},
+         width: '450px'
+        });
+
+       dialogRef.afterClosed().subscribe((result:any) => {
+
+         if(result == 1){
+           this.openSnackBar("Categoria Actualizada", "Exitosa");
+           this.getCategories();
+         }else if (result == 2) {
+           this.openSnackBar("Error al actualizar categoria", "Error");
+         }
+
+       })
+    }
+
   openSnackBar(message: string, action: string) : MatSnackBarRef<SimpleSnackBar> {
     return this.snackBar.open(message, action, {
       duration: 2000
     })
 
   }
-
 
 }
 

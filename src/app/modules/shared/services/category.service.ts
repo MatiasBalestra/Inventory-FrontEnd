@@ -32,4 +32,14 @@ saveCategories(body: any) {
   return this.http.post(endpoint, body);
 }
 
+
+/**
+ * update category
+ */
+
+updateCategories(body:any, id: any) {
+  const endpoint = `${base_url}/categories/${id}` ;
+  return this.http.put(endpoint, body);
+}
+
 }
