@@ -44,7 +44,7 @@ export class ProductComponent implements OnInit {
       const listProduct = resp.product.products;
 
       listProduct.forEach((element: ProductElement) => {
-        element.category = element.category.name;
+        //element.category = element.category.name;
         element.picture = 'data:image/jpeg;base64, ' +element.picture;
         dateProduct.push(element);
       });
@@ -85,8 +85,33 @@ export class ProductComponent implements OnInit {
 
   }
 
+  edit(id:number, name:string, price:number, account:number, category: any) {
+
+
+    const dialogRef = this.dialog.open( NewProductComponent ,
+      {
+       width: '450px',
+       data: {id: id, name: name, price: price, account: account, category: category }
+      });
+
+     dialogRef.afterClosed().subscribe((result:any) => {
+
+       if(result == 1){
+         this.openSnackBar("Producto Editado", "Exitosa");
+         this.getProducts();
+       }else if (result == 2) {
+         this.openSnackBar("Error al editar producto", "Error");
+       }
+
+     })
+
+  }
+
 
 }
+
+
+
 
 
 export interface ProductElement {
