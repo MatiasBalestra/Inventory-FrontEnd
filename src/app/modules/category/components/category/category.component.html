@@ -43,7 +43,7 @@
 
       <!-- actions -->
 
-      <ng-container matColumnDef="actions">
+      <ng-container matColumnDef="actions" >
         <th mat-header-cell *matHeaderCellDef>Acciones</th>
         <td mat-cell *matCellDef="let element; let i=index">
 
@@ -52,7 +52,7 @@
             <mat-icon aria-label="Edit">edit</mat-icon>
           </button>
 
-          <button mat-icon-button color="accent" (click)="onDelete(element.id)">
+          <button mat-icon-button color="accent" (click)="onDelete(element.id)" *ngIf="isAdmin">
             <mat-icon aria-label="Delete">delete</mat-icon>
           </button>
         </td>
