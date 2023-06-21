@@ -61,5 +61,16 @@ getCategoryById(id:any) {
   return this.http.get(endpoint, id);
 }
 
+/***
+ * export categories
+ */
+
+exportCategories() {
+  const endpoint = `${base_url}/categories/export/excel` ;
+  return this.http.get(endpoint, {
+    responseType: 'blob'
+  });
+}
+
 }
 
